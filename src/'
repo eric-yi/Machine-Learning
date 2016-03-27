@@ -1,0 +1,140 @@
+#!/usr/bin/env python
+# -*- coding:utf-8 -*-
+"""
+* 使用MCTS算法, Monte Carlo Tree Search
+* 相连定义为横、竖、对角相邻
+* 5子相连胜
+* 行棋方4子已相连，并且两端无子，必胜
+* 对方已3子相连，并且两端无子，行棋必须下在对方两端
+* 当以上情况无出现，优先下在距离本方棋子最近的地方
+"""
+
+import math
+
+_debug = True
+#_debug = False
+
+def debug(*values):
+  if _debug:
+    log('debug', *values)
+
+def info(*values):
+  log('info', *values)
+
+def log(level, *values):
+  message = '[%s]' % level
+  for value in values:
+    message += '\t%s' % str(value)
+  print message
+
+board_size = [9, 9]
+first_step = [5, 5]
+#train_num = 1000
+train_num = 1
+
+class Board:
+  def __init__(self):
+    self.width = self.height = 9
+    self.x = self.y = -1
+    self.steps = [[-1] * self.width] * self.height
+    debug(self.steps)
+
+  def check(self, x, y):
+    if x < self.width and y < self.height:
+      return True
+    return False
+
+  def add(self, x, y, c):
+    self.x = x
+    self.y = y
+    self.steps[x][y] = c
+
+  def terminal(self):
+    return False
+
+  def around(x, y):
+    a = []
+    if x != 0:
+      if y != 0: a.append(x-1, y-1)
+      a.append(x-1, y)
+      if y != 8: a.append(x-1, y+1)
+    if y != 0: a.append(x, y-1)
+    if y != 8: a.append(x, y+1)
+    if x != 8:
+      if y != 0: a.append(x-1, y-1)
+      a.append(x-1, y)
+      if y != 8: a.append(x-1, y+1)
+
+    return a
+
+class Node:
+  def __init__(self, x, y, w, v):
+    self.x = x
+    self.y = y
+    self.w = w
+    self.v = v
+    self.children = []
+
+  def add(self, child):
+    self.children.append(child)
+
+  def is_leaf(self):
+    if not self.children:
+      return True
+    return False
+
+  def __str__(self):
+    s = str(self.w) + '/' + str(self.v)
+    if self.children:
+      s += ' -> '
+    else:
+      s += ' . '
+    for child in self.children:
+      s += str(child)
+    return s
+
+def selection_value(node, total):
+  return float(node.w) / node.v + math.sqrt(2 * math.log(total) / node.v)
+
+def selection(node):
+  total = node.v
+  return sorted(node.children, key = lambda child: selection_value(child, total))[-1]
+
+def go():
+  root = Node(5, 5, 0, 1)
+  chess = 1
+  for i in range(train_num):
+    board = Board()
+    board.add(5, 5, chess)
+    is_terminal = False
+    node = None
+    # selection
+    if root.children:
+      debug('>>selection')
+      node = selectioin(root)
+      chess = 2
+      board.add(node.x, node.y, chess)
+      while True:
+	if node.children and not is_terminal:
+	  chess = 3 - chess
+	  node = selectioin(root)
+	  board.add(node.x, node.y, chess)
+	  is_terminal = board.terminal
+
+    if is_terminal: break
+
+    # expansion
+    debug('>>expansion')
+
+      node.x, node.y
+
+
+    # Rollout
+
+    # Backprogration
+    pass
+  pass
+
+if __name__ == '__main__':
+  log('go5')
+  go()
