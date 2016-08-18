@@ -9,3 +9,8 @@ Thumbs.db
 .log
 *.swp
 /logs
+/vendor
+baidu_tieba
+.tmp
+*.pyc
+/downloads

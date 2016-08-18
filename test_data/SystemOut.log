@@ -1,0 +1,12 @@
+************ Start Display Current Environment ************
+WebSphere Platform 8.5.5.2 [ND 8.5.5.2 cf021414.01][IBMJAVA7 7.0.4.1 gm1318.03] running with process name modCell01\modNode01\usercenter and process id 61327
+Host Operating System is Linux, version 2.6.32-431.el6.x86_64
+Java version = 1.6.0, Java Compiler = j9jit26, Java VM name = IBM J9 VM
+was.install.root = /was/IBM/WebSphere/AppServer
+user.install.root = /was/IBM/WebSphere/AppServer/profiles/AppSrv01
+Java Home = /was/IBM/WebSphere/AppServer/java/jre
+ws.ext.dirs = /was/IBM/WebSphere/AppServer/java/lib:/was/IBM/WebSphere/AppServer/profiles/AppSrv01/classes:/was/IBM/WebSphere/AppServer/classes:/was/IBM/WebSphere/AppServer/lib:/was/IBM/WebSphere/AppServer/installedChannels:/was/IBM/WebSphere/AppServer/lib/ext:/was/IBM/WebSphere/AppServer/web/help:/was/IBM/WebSphere/AppServer/deploytool/itp/plugins/com.ibm.etools.ejbdeploy/runtime
+Classpath = /was/IBM/WebSphere/AppServer/profiles/AppSrv01/properties:/was/IBM/WebSphere/AppServer/properties:/was/IBM/WebSphere/AppServer/lib/startup.jar:/was/IBM/WebSphere/AppServer/lib/bootstrap.jar:/was/IBM/WebSphere/AppServer/lib/jsf-nls.jar:/was/IBM/WebSphere/AppServer/lib/lmproxy.jar:/was/IBM/WebSphere/AppServer/lib/urlprotocols.jar:/was/IBM/WebSphere/AppServer/deploytool/itp/batchboot.jar:/was/IBM/WebSphere/AppServer/deploytool/itp/batch2.jar:/was/IBM/WebSphere/AppServer/java/lib/tools.jar:/data/smart_agent/plugins/JavaAgent_1456892617X1002x0/lib/CAgent-1.0.0.jar:/data/smart_agent/plugins/JavaAgent_1456892617X1002x0/lib/CAgent-1.0.0.jar
+Java Library path = /was/IBM/WebSphere/AppServer/lib/native/linux/x86_64/:/was/IBM/WebSphere/AppServer/java/jre/lib/amd64/compressedrefs:/was/IBM/WebSphere/AppServer/java/jre/lib/amd64:/was/IBM/WebSphere/AppServer/bin:/was/IBM/WebSphere/AppServer/nulldllsdir:/usr/lib:
+Orb Version = IBM Java ORB build orb626ifx-20131212.00 (IX90136+IX90137)
+3/16/16 10:21:14:100 CST] 00000082 SystemOut     O 2016-03-16 10:21:14.100 [Thread-64] ERROR   r.clients.jedis.JedisSentinelPool:383 - Lost connection to Sentinel at 10.129.34.216:26380. Sleeping 5000ms and retrying.

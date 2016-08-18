@@ -1,0 +1,5 @@
+See Appendix A to learn how to configure your machine for development with the Algorithmia API in Node.js.
+The Keywords For Document Set algorithm implements TF-IDF for a function to retrieve keywords in a document set. This function expects a set of documents, each as a separate string, and an integer to define how many keywords to return.
+The following example passes three documents and returns the top two keywords from each document, including the TF-IDF score:
+var algorithmia = require("algorithmia");
+var client = algorithmia(process.env.ALGORITHMIA_API_KEY);

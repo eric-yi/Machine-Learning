@@ -1,0 +1,10 @@
+#************************************************
+# requirement libraries on web server
+# -----
+# 04/02/2016
+#------------------------------------------------
+
+google-ngram-downloader
+ngram
+lxml
+

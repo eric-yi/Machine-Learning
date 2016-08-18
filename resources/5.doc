@@ -1,0 +1,3 @@
+Continuing a simple example from this collection, 0.05 would be a 100 word document with 1 instance of "JavaScript" and 0.5 would be a 100 word document with "JavaScript" appearing 25 times. To determine if the document will be tagged with "JavaScript", you need to decide on a threshold score.
+The score you choose will vary depending on your data set. A document with only one instance of "JavaScript" (score 0.05) is unlikely to be focused on JavaScript, but obvioulsy the high score of 0.5 is probably on topic.
+TF-IDF Code Example Using Node.js

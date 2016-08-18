@@ -1,0 +1,15 @@
+
+var input = [["badger badger buffalo mushroom mushroom mushroom mushroom mushroom mushroom mushroom","antelope buffalo mushroom","bannana"],2];
+
+client.algo("nlp/KeywordsForDocumentSet/0.1.7").pipe(input).then(function(output) {
+  if (output.error) {
+      console.log(output.error);
+  } else {
+      console.log(output.result);
+  }
+});
+This returns:
+[ { mushroom: 0.5187490272120597, badger: 0.8078365072138199 },
+{ antelope: 0.47712125471966244, buffalo: 0.17609125905568124 },
+{ bannana: 0.47712125471966244 } ]
+As you can see, the algorithm calculated the frequency of each word. If you do the math, you'll find that these TF-IDF scores are not just a simple average, but are weighted as explained in this chapter. Note that because the last document only contained one value, the return value for the final document only contains one value.
