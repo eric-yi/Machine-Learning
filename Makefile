@@ -15,7 +15,7 @@ PIP =pip
 default: clean init
 
 init:
-  $(PIP) install -r $(DEPS)
+	$(PIP) install -r $(DEPS)
 
 clean:
-  $(RM) -r $(TARGET)
+	$(RM) -r $(TARGET)

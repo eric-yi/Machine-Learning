@@ -7,4 +7,4 @@
 google-ngram-downloader
 ngram
 lxml
-
+scikit-learn
