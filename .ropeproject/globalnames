@@ -1,0 +1,12 @@
+€}q(Uanimate_decay]q(UrunqUaniqUdata_genqUinitqUydataqUfigqUaxq	Ulineq
+UxdataqeUtest_app]qUTestCaseqaUapp]q(Uload_csvqheU	test_util]q(Utest_ngrams_to_coocqUtest_get_indices_manygramsqUtest_get_indices_5gramsqUtest_get_indices_1gramsqUtest_count_coccurrenceqeUDRF]q(U
+res_sharesqUdivideqUshowqUrateqUadd_2qUsum_2qUDRFqUtotalqUlogqUaddq hU	resourcesq!Uresource_nameq"Umaxq#U
+dom_sharesq$Uinfoq%Ucomputeq&Uweightsq'Utotal_allocq(Udebugq)eUsklearn_example]q*(Udigitsq+Uirisq,Uclfq-Uclf2q.UsUyUXeUCANDIDATE-ELIMINATION]q/UCANDIDATE_ELIMINATIONq0aUFIND-S]q1(UFIND_Sq2USeUgoogle_ngram_downloader]UnGram]q3(h%Uheadq4hUinvoke_washq5Uopen_stopWordq6Uinvoke_tfidfq7Utailq8U	invoke_tfq9Uinvoke_tf_in_dirq:h)U
+invoke_idfq;Umainq<eUCOMMON_REPLACE]q=(UhUplaytennis_stringq>Uloop_print_entropyq?UGENERALq@UentropyqAUSPECIALqBUgainqCeU	test_main]qD(UcompressobjqEUtest_downloadqFUcompressed_dataqGUtest_readlineqHUurlsqIUtest_cooccurrenceqJUfake_requestqKUdataqLeUtest]qM(Uget_src_dirqNUSRC_DIRqOeUtest.test_nGram]qPhaUutils]qQU	list_pathqRaUMCTS]qS(h%UNodeqTU	selectionqUhUselection_valueqVU	make_treeqWh)U	make_nodeqXUMCTSqYeUtest.testID3]Utest.testNgram]qZ(h%hU	test_pathq[Uurlq\Utest_google_ngram_downloadq]hUrecordsq^Utestq_Ufnameq`h)Usw_listqaU
+test_ngramqbUload_stop_wordsqcUpre_handlerqdeU
+web_spider]qe(U	tieba_dirqfUparse_html_with_lxmlqgUnot_found_sizeqhU
+fetch_pageqihhhUsave_badidu_tiebaqjh8Umake_feature_listqkh_h<h4Ugen_idqlUfetch_baidu_tiebaqmh%UNoArgsTestProgramqnUgen_idsqoh)eUtest.test_utils]qphaUgoogle_ngram_downloader.util]qq(Ureadline_google_storeqrUURL_TEMPLATEqsUcount_coccurrenceqtU
+word_to_idquUngram_to_coocqvURecordqwUget_indicesqxUiter_google_storeqyUFILE_TEMPLATEqzeUknn]q{(Ugroupq|Ulabelsq}UcreateDataSetq~U	classify0qUexampleq€eUsetup]q(UPyTestq‚U	read_fileqƒUdirnameq„Ulong_descriptionq…eUID3]q†UID3q‡aU google_ngram_downloader.__main__]qˆ(U
+dispatcherq‰UcooccurrenceqŠUdownloadq‹UcommandqŒUreadlineqeUgo5]qŽ(h%hThUhU
+board_sizeqhVU
+first_stepqU	train_numq‘Ugoq’h)UBoardq“eUplot_cv_predict]q”(Ubostonq•Ulrq–U	predictedq—Uyh	heu.
