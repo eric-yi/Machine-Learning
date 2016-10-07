@@ -1,12 +1,12 @@
 Ä}q(Uanimate_decay]q(UrunqUaniqUdata_genqUinitqUydataqUfigqUaxq	Ulineq
-UxdataqeUtest_app]qUTestCaseqaUapp]q(Uload_csvqheU	test_util]q(Utest_ngrams_to_coocqUtest_get_indices_manygramsqUtest_get_indices_5gramsqUtest_get_indices_1gramsqUtest_count_coccurrenceqeUDRF]q(U
-res_sharesqUdivideqUshowqUrateqUadd_2qUsum_2qUDRFqUtotalqUlogqUaddq hU	resourcesq!Uresource_nameq"Umaxq#U
-dom_sharesq$Uinfoq%Ucomputeq&Uweightsq'Utotal_allocq(Udebugq)eUsklearn_example]q*(Udigitsq+Uirisq,Uclfq-Uclf2q.UsUyUXeUCANDIDATE-ELIMINATION]q/UCANDIDATE_ELIMINATIONq0aUFIND-S]q1(UFIND_Sq2USeUgoogle_ngram_downloader]UnGram]q3(h%Uheadq4hUinvoke_washq5Uopen_stopWordq6Uinvoke_tfidfq7Utailq8U	invoke_tfq9Uinvoke_tf_in_dirq:h)U
-invoke_idfq;Umainq<eUCOMMON_REPLACE]q=(UhUplaytennis_stringq>Uloop_print_entropyq?UGENERALq@UentropyqAUSPECIALqBUgainqCeU	test_main]qD(UcompressobjqEUtest_downloadqFUcompressed_dataqGUtest_readlineqHUurlsqIUtest_cooccurrenceqJUfake_requestqKUdataqLeUtest]qM(Uget_src_dirqNUSRC_DIRqOeUtest.test_nGram]qPhaUutils]qQU	list_pathqRaUMCTS]qS(h%UNodeqTU	selectionqUhUselection_valueqVU	make_treeqWh)U	make_nodeqXUMCTSqYeUtest.testID3]Utest.testNgram]qZ(h%hU	test_pathq[Uurlq\Utest_google_ngram_downloadq]hUrecordsq^Utestq_Ufnameq`h)Usw_listqaU
-test_ngramqbUload_stop_wordsqcUpre_handlerqdeU
-web_spider]qe(U	tieba_dirqfUparse_html_with_lxmlqgUnot_found_sizeqhU
-fetch_pageqihhhUsave_badidu_tiebaqjh8Umake_feature_listqkh_h<h4Ugen_idqlUfetch_baidu_tiebaqmh%UNoArgsTestProgramqnUgen_idsqoh)eUtest.test_utils]qphaUgoogle_ngram_downloader.util]qq(Ureadline_google_storeqrUURL_TEMPLATEqsUcount_coccurrenceqtU
-word_to_idquUngram_to_coocqvURecordqwUget_indicesqxUiter_google_storeqyUFILE_TEMPLATEqzeUknn]q{(Ugroupq|Ulabelsq}UcreateDataSetq~U	classify0qUexampleqÄeUsetup]qÅ(UPyTestqÇU	read_fileqÉUdirnameqÑUlong_descriptionqÖeUID3]qÜUID3qáaU google_ngram_downloader.__main__]qà(U
-dispatcherqâUcooccurrenceqäUdownloadqãUcommandqåUreadlineqçeUgo5]qé(h%hThUhU
-board_sizeqèhVU
-first_stepqêU	train_numqëUgoqíh)UBoardqìeUplot_cv_predict]qî(UbostonqïUlrqñU	predictedqóUyh	heu.
+UxdataqeUtest_app]qUTestCaseqaUapp]q(Uload_csvqhUTRAIN_CATEGORICALqUload_labelsqeU	test_util]q(Utest_ngrams_to_coocqUtest_get_indices_manygramsqUtest_get_indices_5gramsqUtest_get_indices_1gramsqUtest_count_coccurrenceqeUDRF]q(U
+res_sharesqUdivideqUshowqUrateqUadd_2qUsum_2qUDRFqUtotalq Ulogq!Uaddq"hU	resourcesq#Uresource_nameq$Umaxq%U
+dom_sharesq&Uinfoq'Ucomputeq(Uweightsq)Utotal_allocq*Udebugq+eUsklearn_example]q,(Udigitsq-Uirisq.Uclfq/Uclf2q0UsUyUXeUCANDIDATE-ELIMINATION]q1UCANDIDATE_ELIMINATIONq2aUFIND-S]q3(UFIND_Sq4USeUgoogle_ngram_downloader]UnGram]q5(h'Uheadq6h!Uinvoke_washq7Uopen_stopWordq8Uinvoke_tfidfq9Utailq:U	invoke_tfq;Uinvoke_tf_in_dirq<h+U
+invoke_idfq=Umainq>eUCOMMON_REPLACE]q?(UhUplaytennis_stringq@Uloop_print_entropyqAUGENERALqBUentropyqCUSPECIALqDUgainqEeU	test_main]qF(UcompressobjqGUtest_downloadqHUcompressed_dataqIUtest_readlineqJUurlsqKUtest_cooccurrenceqLUfake_requestqMUdataqNeUtest]qO(Uget_src_dirqPUSRC_DIRqQeUtest.test_nGram]qRhaUutils]qSU	list_pathqTaUMCTS]qU(h'UNodeqVU	selectionqWh!Uselection_valueqXU	make_treeqYh+U	make_nodeqZUMCTSq[eUtest.testID3]Utest.testNgram]q\(h'h!U	test_pathq]Uurlq^Utest_google_ngram_downloadq_hUrecordsq`UtestqaUfnameqbh+Usw_listqcU
+test_ngramqdUload_stop_wordsqeUpre_handlerqfeU
+web_spider]qg(U	tieba_dirqhUparse_html_with_lxmlqiUnot_found_sizeqjU
+fetch_pageqkhhh!Usave_badidu_tiebaqlh:Umake_feature_listqmhah>h6Ugen_idqnUfetch_baidu_tiebaqoh'UNoArgsTestProgramqpUgen_idsqqh+eUtest.test_utils]qrhaUgoogle_ngram_downloader.util]qs(Ureadline_google_storeqtUURL_TEMPLATEquUcount_coccurrenceqvU
+word_to_idqwUngram_to_coocqxURecordqyUget_indicesqzUiter_google_storeq{UFILE_TEMPLATEq|eUknn]q}(Ugroupq~UlabelsqUcreateDataSetqÄU	classify0qÅUexampleqÇeUsetup]qÉ(UPyTestqÑU	read_fileqÖUdirnameqÜUlong_descriptionqáeUID3]qàUID3qâaU google_ngram_downloader.__main__]qä(U
+dispatcherqãUcooccurrenceqåUdownloadqçUcommandqéUreadlineqèeUgo5]qê(h'hVhWh!U
+board_sizeqëhXU
+first_stepqíU	train_numqìUgoqîh+UBoardqïeUplot_cv_predict]qñ(UbostonqóUlrqòU	predictedqôUyh	heu.

@@ -16,4 +16,9 @@ class TestCase(unittest.TestCase):
         app.load_csv(csv_file, 10)
         self.assertTrue(True)
 
+    def test_load_labels(self):
+        data_lables = app.load_labels()
+        print data_lables
+        self.assertTrue(len(data_lables) > 0)
+
 unittest.main()
