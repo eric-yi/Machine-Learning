@@ -15,11 +15,11 @@ class TestCase(unittest.TestCase):
     @unittest.skip('skip')
     def test_load_analysis_train_files(self):
         analysis_train_files = app.load_analysis_train_files()
-        self.assertEqual(len(analysis_train_files), 4)
-        self.assertEqual(analysis_train_files[0], app.FEATURES_FILE)
-        self.assertEqual(analysis_train_files[1], '../logs/train_categrical_100.csv')
-        self.assertEqual(analysis_train_files[2], '../logs/train_date_100.csv')
-        self.assertEqual(analysis_train_files[3], '../logs/train_numeric_100.csv')
+        self.assertEqual(len(analysis_train_files), 6)
+        self.assertEqual(analysis_train_files[0], app.CATEGORICAL_FEATURES_FILE)
+        self.assertEqual(analysis_train_files[3], '../logs/train_categrical_100.csv')
+        self.assertEqual(analysis_train_files[4], '../logs/train_date_100.csv')
+        self.assertEqual(analysis_train_files[5], '../logs/train_numeric_100.csv')
 
     @unittest.skip('skip')
     def test_load_csv(self):
@@ -51,8 +51,8 @@ class TestCase(unittest.TestCase):
         self.assertTrue(True)
 
     #@unittest.skip('skip')
-    def test_analysis(self):
-        app.analysis()
+    def test_save_arrange(self):
+        app.save_arrange()
         self.assertTrue(True)
 
 unittest.main()
