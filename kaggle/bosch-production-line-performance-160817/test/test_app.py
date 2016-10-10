@@ -50,9 +50,14 @@ class TestCase(unittest.TestCase):
         app.truncate(csv_files, dst_files, factor)
         self.assertTrue(True)
 
-    #@unittest.skip('skip')
+    @unittest.skip('skip')
     def test_save_arrange(self):
         app.save_arrange()
+        self.assertTrue(True)
+
+    #@unittest.skip('skip')
+    def test_save_failed_numeric(self):
+        app.save_failed_numeric()
         self.assertTrue(True)
 
 unittest.main()

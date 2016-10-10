@@ -14,18 +14,19 @@ SUFFIX = 'csv'
 TRAIN_CATEGORICAL_FILE = '%s/%s.%s' % (ROOT, TRAIN_CATEGORICAL, SUFFIX)
 TRAIN_DATE_FILE = '%s/%s.%s' % (ROOT, TRAIN_DATE, SUFFIX)
 TRAIN_NUMERIC_FILE = '%s/%s.%s' % (ROOT, TRAIN_NUMERIC, SUFFIX)
+TRAIN_NUMERIC_FAILED_FILE = '%s/%s_failed.%s' % (ROOT, TRAIN_NUMERIC, SUFFIX)
 CATEGORICAL_FEATURES_FILE = '%s/categorical_%s.%s' % (ROOT, FEATURES, SUFFIX)
 DATE_FEATURES_FILE = '%s/date_%s.%s' % (ROOT, FEATURES, SUFFIX)
 NUMERIC_FEATURES_FILE = '%s/numeric_%s.%s' % (ROOT, FEATURES, SUFFIX)
 
 ARRANGE_FILE = '%s/arrange_%d.%s' % (ROOT, 100, SUFFIX)
 
+
 def load_analysis_train_files(factor=100):
     return [CATEGORICAL_FEATURES_FILE, DATE_FEATURES_FILE, NUMERIC_FEATURES_FILE,
             ('%s/%s_%d.%s' % (ROOT, TRAIN_CATEGORICAL, factor, SUFFIX)),
             ('%s/%s_%d.%s' % (ROOT, TRAIN_DATE, factor, SUFFIX)),
             ('%s/%s_%d.%s' % (ROOT, TRAIN_NUMERIC, factor, SUFFIX))]
-
 
 def load_csv(csv_file, rows=-1):
     datalist = []
@@ -51,6 +52,19 @@ def save_features():
     save_feature(TRAIN_CATEGORICAL_FILE, CATEGORICAL_FEATURES_FILE)
     save_feature(TRAIN_DATE_FILE, DATE_FEATURES_FILE)
     save_feature(TRAIN_NUMERIC_FILE, NUMERIC_FEATURES_FILE)
+
+def save_failed_numeric(csv_file=TRAIN_NUMERIC_FILE, failed_file=TRAIN_NUMERIC_FAILED_FILE):
+    datalist = load_csv(csv_file)
+    _file = open(failed_file, 'w')
+    _file.write(datalist[0])
+    _file.write('\n')
+    m = 1
+    while m < len(datalist):
+        data = datalist[m]
+        if int(data.split(',')[-1]) == 1:
+            _file.write(data)
+            _file.write('\n')
+        m += 1
 
 def truncate(csv_files, dst_files, factor=100):
     datalist_group = []
