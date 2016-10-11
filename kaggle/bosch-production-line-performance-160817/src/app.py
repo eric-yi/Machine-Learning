@@ -229,27 +229,27 @@ def sigmoid(x):
     return 1.0 / (1 + exp(-x))
 
 from numpy import *
-def with_logistic(data=load_numeric_sample_data(), alpha=0.00001):
+def with_logistic(data=load_numeric_sample_data(), loop=500):
     # init
-    #print data
     mat_data = mat(data)
-    #print mat_data.dtype
     m, n = shape(mat_data)
     results = mat_data[:, n-1]
-    #print results
     ids = mat_data[:, 0]
     datas = mat_data[:, 1:n-1]
+
     # compute
     m, n = shape(datas)
-    #print m
-    #print n
     weights = ones((n, 1))
-    for i in range(m):
-        h = sigmoid(sum(datas[i] * weights))
-        error = results[i] - h
-        weights = weights - (alpha * error * datas[i]).transpose()
-
-    print shape(weights)
+    for j in range(loop):
+        data_index = range(m)
+        for i in range(m):
+            alpha = 4 / (1.0 + j + i) + 0.001
+            rand_index = int(random.uniform(0, len(data_index)))
+            h = sigmoid(sum(datas[rand_index] * weights))
+            error = results[i] - h
+            #print error
+            weights = weights + (alpha * error * datas[rand_index]).transpose()
+            del(data_index[rand_index])
     print weights
     return weights
 
