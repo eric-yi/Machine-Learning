@@ -219,5 +219,40 @@ def format_value(value):
         return value
     return 0
 
+def load_numeric_sample_data():
+    analysis_train_files = load_analysis_train_files()
+    train_numeric_file = analysis_train_files[5]
+    train_numeric_data = load_csv(train_numeric_file)
+    return [map(lambda x: 0 if x == '' else float(x), line.split(',')) for line in train_numeric_data]
+
+def sigmoid(x):
+    return 1.0 / (1 + exp(-x))
+
+from numpy import *
+def with_logistic(data=load_numeric_sample_data(), alpha=0.00001):
+    # init
+    #print data
+    mat_data = mat(data)
+    #print mat_data.dtype
+    m, n = shape(mat_data)
+    results = mat_data[:, n-1]
+    #print results
+    ids = mat_data[:, 0]
+    datas = mat_data[:, 1:n-1]
+    # compute
+    m, n = shape(datas)
+    #print m
+    #print n
+    weights = ones((n, 1))
+    for i in range(m):
+        h = sigmoid(sum(datas[i] * weights))
+        error = results[i] - h
+        weights = weights - (alpha * error * datas[i]).transpose()
+
+    print shape(weights)
+    print weights
+    return weights
+
+
 def run():
     print 'start run...'

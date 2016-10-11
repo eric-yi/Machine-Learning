@@ -55,9 +55,14 @@ class TestCase(unittest.TestCase):
         app.save_arrange()
         self.assertTrue(True)
 
-    #@unittest.skip('skip')
+    @unittest.skip('skip')
     def test_save_failed_numeric(self):
         app.save_failed_numeric()
+        self.assertTrue(True)
+
+    #@unittest.skip('skip')
+    def test_with_logistic(self):
+        app.with_logistic()
         self.assertTrue(True)
 
 unittest.main()
