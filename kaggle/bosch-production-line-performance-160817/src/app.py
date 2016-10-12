@@ -295,8 +295,7 @@ def calcute_feature_count(datas):
         j += 1
     return counts
 
-
-def with_pca(data=load_numeric_sample_data()):
+def analysis_numeric(data=load_numeric_sample_data()):
     # init
     ids, datas, results = init_numeric_data(data)
     print shape(datas)
@@ -342,6 +341,9 @@ def with_pca(data=load_numeric_sample_data()):
 
     zero_counts = []
 
+
+def with_pca(data=load_numeric_sample_data()):
+    pass
 
 
 def run():

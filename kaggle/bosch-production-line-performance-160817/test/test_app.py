@@ -66,11 +66,6 @@ class TestCase(unittest.TestCase):
         app.with_logistic()
         self.assertTrue(True)
 
-    #@unittest.skip('skip')
-    def test_with_pca(self):
-        app.with_pca()
-        self.assertTrue(True)
-
     @unittest.skip('skip')
     def test_load_categorical_sample_data(self):
         categorical = app.load_categorical_sample_data()
@@ -89,6 +84,14 @@ class TestCase(unittest.TestCase):
         print shape(numeric)
         self.assertTrue(True)
 
+    #@unittest.skip('skip')
+    def test_analysis_numeric(self):
+        app.analysis_statistics()
+        self.assertTrue(True)
 
+    @unittest.skip('skip')
+    def test_with_pca(self):
+        app.with_pca()
+        self.assertTrue(True)
 
 unittest.main()
