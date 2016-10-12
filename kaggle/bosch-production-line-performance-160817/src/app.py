@@ -3,6 +3,7 @@
 
 import csv
 import random
+from numpy import *
 
 ROOT = '../logs'
 TRAIN_CATEGORICAL = 'train_categorical'
@@ -219,23 +220,41 @@ def format_value(value):
         return value
     return 0
 
+def load_categorical_sample_data():
+    analysis_train_files = load_analysis_train_files()
+    train_categorical_file = analysis_train_files[3]
+    train_categorical_data = load_csv(train_categorical_file)
+    return [map(lambda x: 0 if x == '' else float(x[1:]), line.split(',')) for line in train_categorical_data]
+
+def load_date_sample_data():
+    analysis_train_files = load_analysis_train_files()
+    train_date_file = analysis_train_files[4]
+    train_date_data = load_csv(train_date_file)
+    return [map(lambda x: 0 if x == '' else float(x), line.split(',')) for line in train_date_data]
+
 def load_numeric_sample_data():
     analysis_train_files = load_analysis_train_files()
     train_numeric_file = analysis_train_files[5]
     train_numeric_data = load_csv(train_numeric_file)
     return [map(lambda x: 0 if x == '' else float(x), line.split(',')) for line in train_numeric_data]
 
+
 def sigmoid(x):
     return 1.0 / (1 + exp(-x))
 
-from numpy import *
-def with_logistic(data=load_numeric_sample_data(), loop=500):
+def init_numeric_data(data):
     # init
     mat_data = mat(data)
     m, n = shape(mat_data)
     results = mat_data[:, n-1]
     ids = mat_data[:, 0]
     datas = mat_data[:, 1:n-1]
+
+    return ids, datas, results
+
+def with_logistic(data=load_numeric_sample_data(), loop=500):
+    # init
+    ids, datas, results = init_numeric_data(data)
 
     # compute
     m, n = shape(datas)
@@ -250,8 +269,79 @@ def with_logistic(data=load_numeric_sample_data(), loop=500):
             #print error
             weights = weights + (alpha * error * datas[rand_index]).transpose()
             del(data_index[rand_index])
-    print weights
+    classify(datas, results, weights)
     return weights
+
+def classify(datas, results, weights):
+    n = 0
+    for data in datas:
+        total = sum(data * weights)
+        probe = sigmoid(total)
+        #print probe
+        result = results[n]
+        if int(result) == 1:
+            print probe
+            print '%f, %f\n' % (total, result)
+        n += 1
+
+def calcute_feature_count(datas):
+    m, n = shape(datas)
+    j = 0
+    counts = []
+    while j < n:
+        data = datas[:, j]
+        data_m, data_n = shape(data[data > 0])
+        counts.append(data_n)
+        j += 1
+    return counts
+
+
+def with_pca(data=load_numeric_sample_data()):
+    # init
+    ids, datas, results = init_numeric_data(data)
+    print shape(datas)
+    mean_datas = mean(datas, axis = 0)
+    #print mean_datas
+    full_counts = calcute_feature_count(datas)
+    #print full_counts
+    #print len(full_counts)
+
+    m, n = shape(datas)
+    i = 0
+    results_statistics = []
+    result_list = results.tolist()
+    id_list = ids.tolist()
+    while i < m:
+        data = datas[i, :]
+        data_m, data_n = shape(data[data > 0])
+        result = result_list[i][0]
+        id = id_list[i][0]
+        results_statistics.append([id, data_n, sum(data), result]);
+        i += 1
+    #print results_statistics
+
+    failed_list = []
+    i = 0
+    for statistics in results_statistics:
+        if statistics[-1] == 1.0:
+            #print datas[i, :].tolist()[0]
+            failed_list.append(datas[i, :].tolist()[0])
+        i += 1
+
+    failed_counts = calcute_feature_count(mat(failed_list))
+    #print failed_counts
+    #print len(failed_counts)
+
+    counts = []
+    i = 0
+    while i < n:
+        counts.append([full_counts[i], failed_counts[i]])
+        i += 1
+    #print counts
+    print sorted(counts, reverse=True)
+
+    zero_counts = []
+
 
 
 def run():

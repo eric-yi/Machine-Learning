@@ -5,6 +5,7 @@ import unittest
 import sys
 sys.path.append('../src')
 import app
+from numpy import *
 
 class TestCase(unittest.TestCase):
     @unittest.skip('skip')
@@ -60,9 +61,34 @@ class TestCase(unittest.TestCase):
         app.save_failed_numeric()
         self.assertTrue(True)
 
-    #@unittest.skip('skip')
+    @unittest.skip('skip')
     def test_with_logistic(self):
         app.with_logistic()
         self.assertTrue(True)
+
+    #@unittest.skip('skip')
+    def test_with_pca(self):
+        app.with_pca()
+        self.assertTrue(True)
+
+    @unittest.skip('skip')
+    def test_load_categorical_sample_data(self):
+        categorical = app.load_categorical_sample_data()
+        print shape(categorical)
+        self.assertTrue(True)
+
+    @unittest.skip('skip')
+    def test_load_date_sample_data(self):
+        date = app.load_date_sample_data()
+        print shape(date)
+        self.assertTrue(True)
+
+    @unittest.skip('skip')
+    def test_load_numeric_sample_data(self):
+        numeric = app.load_numeric_sample_data()
+        print shape(numeric)
+        self.assertTrue(True)
+
+
 
 unittest.main()
