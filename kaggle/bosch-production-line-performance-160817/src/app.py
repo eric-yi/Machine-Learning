@@ -4,6 +4,7 @@
 import csv
 import random
 from numpy import *
+from types import *
 
 ROOT = '../logs'
 TRAIN_CATEGORICAL = 'train_categorical'
@@ -242,6 +243,15 @@ def load_numeric_sample_data():
 def sigmoid(x):
     return 1.0 / (1 + exp(-x))
 
+def init_categorical_data(data):
+    # init
+    mat_data = mat(data)
+    m, n = shape(mat_data)
+    ids = mat_data[:, 0]
+    datas = mat_data[:, 1:]
+
+    return ids, datas
+
 def init_numeric_data(data):
     # init
     mat_data = mat(data)
@@ -295,6 +305,32 @@ def calcute_feature_count(datas):
         j += 1
     return counts
 
+def get_result_list():
+    analysis_train_files = load_analysis_train_files()
+    train_numeric_file = analysis_train_files[5]
+    train_numeric_data = load_csv(train_numeric_file)
+    return [float(line.split(',')[-1]) for line in train_numeric_data]
+
+def calcute_failed_feature_count(results_statistics, datas):
+    failed_list = []
+    i = 0
+    for statistics in results_statistics:
+        if (type(statistics) is ListType and statistics[-1] == 1.0) \
+           or (type(statistics) is FloatType and statistics == 1.0):
+            failed_list.append(datas[i, :].tolist()[0])
+        i += 1
+
+    return calcute_feature_count(mat(failed_list))
+
+def merge_feature_counts(full_counts, failed_counts):
+    counts = []
+    n = len(full_counts)
+    i = 0
+    while i < n:
+        counts.append([full_counts[i], failed_counts[i]])
+        i += 1
+    return counts
+
 def analysis_numeric(data=load_numeric_sample_data()):
     # init
     ids, datas, results = init_numeric_data(data)
@@ -319,32 +355,34 @@ def analysis_numeric(data=load_numeric_sample_data()):
         i += 1
     #print results_statistics
 
-    failed_list = []
-    i = 0
-    for statistics in results_statistics:
-        if statistics[-1] == 1.0:
-            #print datas[i, :].tolist()[0]
-            failed_list.append(datas[i, :].tolist()[0])
-        i += 1
-
-    failed_counts = calcute_feature_count(mat(failed_list))
+    failed_counts = calcute_failed_feature_count(results_statistics, datas)
     #print failed_counts
     #print len(failed_counts)
 
-    counts = []
-    i = 0
-    while i < n:
-        counts.append([full_counts[i], failed_counts[i]])
-        i += 1
-    #print counts
+    counts = merge_full_counts(full_counts, failed_counts)
+    print counts
     print sorted(counts, reverse=True)
 
     zero_counts = []
 
+def analysis_categorical(data=load_categorical_sample_data()):
+    # init
+    ids, datas = init_categorical_data(data)
+    full_counts = calcute_feature_count(datas)
+    #print full_counts
+    result_list = get_result_list()
+    #print len(result_list)
+    failed_counts = calcute_failed_feature_count(result_list, datas)
+    #print failed_counts
+
+    print len(full_counts)
+    print len(failed_counts)
+    counts = merge_feature_counts(full_counts, failed_counts)
+    print counts
+    print sorted(counts, reverse=True)
 
 def with_pca(data=load_numeric_sample_data()):
     pass
-
 
 def run():
     print 'start run...'
