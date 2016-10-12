@@ -5,6 +5,8 @@ import csv
 import random
 from numpy import *
 from types import *
+import matplotlib
+import matplotlib.pyplot as plt
 
 ROOT = '../logs'
 TRAIN_CATEGORICAL = 'train_categorical'
@@ -243,7 +245,7 @@ def load_numeric_sample_data():
 def sigmoid(x):
     return 1.0 / (1 + exp(-x))
 
-def init_categorical_data(data):
+def init_categorical_and_date_data(data):
     # init
     mat_data = mat(data)
     m, n = shape(mat_data)
@@ -359,15 +361,21 @@ def analysis_numeric(data=load_numeric_sample_data()):
     #print failed_counts
     #print len(failed_counts)
 
-    counts = merge_full_counts(full_counts, failed_counts)
+    counts = merge_feature_counts(full_counts, failed_counts)
     print counts
     print sorted(counts, reverse=True)
 
-    zero_counts = []
+    #draw_feature_counts(sorted(full_counts))
+    draw_feature_counts(sorted(failed_counts))
+
+def draw_feature_counts(counts, x=1):
+    #fig = plt.figure()
+    plt.plot(counts)
+    plt.show()
 
 def analysis_categorical(data=load_categorical_sample_data()):
     # init
-    ids, datas = init_categorical_data(data)
+    ids, datas = init_categorical_and_date_data(data)
     full_counts = calcute_feature_count(datas)
     #print full_counts
     result_list = get_result_list()
@@ -380,6 +388,27 @@ def analysis_categorical(data=load_categorical_sample_data()):
     counts = merge_feature_counts(full_counts, failed_counts)
     print counts
     print sorted(counts, reverse=True)
+    #draw_feature_counts(sorted(full_counts))
+    draw_feature_counts(sorted(failed_counts))
+
+def analysis_date(data=load_date_sample_data()):
+    # init
+    ids, datas = init_categorical_and_date_data(data)
+    full_counts = calcute_feature_count(datas)
+    #print full_counts
+    result_list = get_result_list()
+    #print len(result_list)
+    failed_counts = calcute_failed_feature_count(result_list, datas)
+    #print failed_counts
+
+    print len(full_counts)
+    print len(failed_counts)
+    counts = merge_feature_counts(full_counts, failed_counts)
+    print counts
+    print sorted(counts, reverse=True)
+    #draw_feature_counts(sorted(full_counts))
+    draw_feature_counts(sorted(failed_counts))
+
 
 def with_pca(data=load_numeric_sample_data()):
     pass

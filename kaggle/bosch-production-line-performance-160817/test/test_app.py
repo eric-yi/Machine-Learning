@@ -84,14 +84,19 @@ class TestCase(unittest.TestCase):
         print shape(numeric)
         self.assertTrue(True)
 
-    @unittest.skip('skip')
+    #@unittest.skip('skip')
     def test_analysis_numeric(self):
         app.analysis_numeric()
         self.assertTrue(True)
 
-    #@unittest.skip('skip')
+    @unittest.skip('skip')
     def test_analysis_categorical(self):
         app.analysis_categorical()
+        self.assertTrue(True)
+
+    @unittest.skip('skip')
+    def test_analysis_date(self):
+        app.analysis_date()
         self.assertTrue(True)
 
     @unittest.skip('skip')
