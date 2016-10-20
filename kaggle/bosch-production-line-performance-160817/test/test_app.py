@@ -84,7 +84,7 @@ class TestCase(unittest.TestCase):
         print shape(numeric)
         self.assertTrue(True)
 
-    #@unittest.skip('skip')
+    @unittest.skip('skip')
     def test_analysis_numeric(self):
         app.analysis_numeric()
         self.assertTrue(True)
@@ -102,6 +102,11 @@ class TestCase(unittest.TestCase):
     @unittest.skip('skip')
     def test_with_pca(self):
         app.with_pca()
+        self.assertTrue(True)
+
+    #@unittest.skip('skip')
+    def test_decrease_dim(self):
+        app.decrease_dim()
         self.assertTrue(True)
 
 unittest.main()

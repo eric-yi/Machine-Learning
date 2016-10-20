@@ -329,7 +329,7 @@ def merge_feature_counts(full_counts, failed_counts):
     n = len(full_counts)
     i = 0
     while i < n:
-        counts.append([full_counts[i], failed_counts[i]])
+        counts.append([full_counts[i], failed_counts[i], i])
         i += 1
     return counts
 
@@ -362,11 +362,11 @@ def analysis_numeric(data=load_numeric_sample_data()):
     #print len(failed_counts)
 
     counts = merge_feature_counts(full_counts, failed_counts)
-    print counts
-    print sorted(counts, reverse=True)
-
+    #print counts
+    #print sorted(counts, reverse=True)
     #draw_feature_counts(sorted(full_counts))
-    draw_feature_counts(sorted(failed_counts))
+    #draw_feature_counts(sorted(failed_counts))
+    return sorted(counts, reverse=True)
 
 def draw_feature_counts(counts, x=1):
     #fig = plt.figure()
@@ -383,13 +383,14 @@ def analysis_categorical(data=load_categorical_sample_data()):
     failed_counts = calcute_failed_feature_count(result_list, datas)
     #print failed_counts
 
-    print len(full_counts)
-    print len(failed_counts)
+    #print len(full_counts)
+    #print len(failed_counts)
     counts = merge_feature_counts(full_counts, failed_counts)
-    print counts
-    print sorted(counts, reverse=True)
+    #print counts
+    #print sorted(counts, reverse=True)
     #draw_feature_counts(sorted(full_counts))
-    draw_feature_counts(sorted(failed_counts))
+    #draw_feature_counts(sorted(failed_counts))
+    return sorted(counts, reverse=True)
 
 def analysis_date(data=load_date_sample_data()):
     # init
@@ -401,17 +402,59 @@ def analysis_date(data=load_date_sample_data()):
     failed_counts = calcute_failed_feature_count(result_list, datas)
     #print failed_counts
 
-    print len(full_counts)
-    print len(failed_counts)
+    #print len(full_counts)
+    #print len(failed_counts)
     counts = merge_feature_counts(full_counts, failed_counts)
-    print counts
-    print sorted(counts, reverse=True)
+    #print counts
+    #print sorted(counts, reverse=True)
     #draw_feature_counts(sorted(full_counts))
-    draw_feature_counts(sorted(failed_counts))
+    #draw_feature_counts(sorted(failed_counts))
+    return sorted(counts, reverse=True)
 
+def replace_zero_mean(datas):
+    m, n  = shape(datas)
+    i = 0
+    while i < n:
+        data = datas[:, i]
+        mean_val = mean(data[nonzero(data)])
+        datas[(datas[:, i].A == 0)[:, 0], i] = mean_val
+        i += 1
 
 def with_pca(data=load_numeric_sample_data()):
-    pass
+    ids, datas, results = init_numeric_data(data)
+    replace_zero_mean(datas)
+    print datas
+    #print datas[0, :]
+    mean_vals = mean(datas, axis=0)
+    #print mean_vals
+    mean_removed = datas - mean_vals
+    cov_mat = cov(mean_removed, rowvar=0)
+    print cov_mat[0, :]
+    eig_vals, eig_vects = linalg.eig(mat(cov_mat))
+    eig_val_ind = argsort(eig_vals)
+    #draw_feature_counts(sorted(eig_val_ind))
+    print eig_val_ind
+    print eig_vects
+    red_eig_vects = eig_vects[:, eig_val_ind]
+    low_data_mat = mean_removed * red_eig_vects
+    recon_mat = (low_data_mat * red_eig_vects.T) + mean_vals
+    print shape(recon_mat)
+    print shape(low_data_mat)
+    #print low_data_mat.tolist()
+    #full_counts = calcute_feature_count(recon_mat.tolist())
+
+def decrease_dim(factor=100):
+    categorical_counts = analysis_categorical()
+    date_counts = analysis_date()
+    numeric_counts = analysis_numeric()
+
+    categorical_feature_list = map(lambda x: x[2], categorical_counts[0:factor])
+    date_feature_list = map(lambda x: x[2], date_counts[0:factor])
+    numeric_feature_list = map(lambda x: x[2], numeric_counts[0:factor])
+
+    print 'categorical feature list: %s' % (categorical_feature_list)
+    print 'date feature list: %s' % (date_feature_list)
+    print 'numeric feature list: %s' % (numeric_feature_list)
 
 def run():
     print 'start run...'
